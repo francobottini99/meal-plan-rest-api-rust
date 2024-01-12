@@ -1,5 +1,3 @@
-Paradigmas de Programación - 2023 - Trabajo Práctico III
-
 # REST API en Rust
 
 En este proyecto se desarrolló una *Rest API* para un plan de comidas utilizando el *framework Rocket*. El "*backend*" consiste en manejar una base de datos que permite almacenar ingredientes, recetas y planes alimenticios.
