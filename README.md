@@ -1,7 +1,3 @@
-Aquí tienes la traducción del texto:
-
----
-
 # REST API in Rust
 
 This project involves the development of a *Rest API* for a meal planning system using the *Rocket* framework. The "*backend*" manages a database that stores ingredients, recipes, and meal plans.
