@@ -1,27 +1,31 @@
-# REST API en Rust
+Aquí tienes la traducción del texto:
 
-En este proyecto se desarrolló una *Rest API* para un plan de comidas utilizando el *framework Rocket*. El "*backend*" consiste en manejar una base de datos que permite almacenar ingredientes, recetas y planes alimenticios.
+---
+
+# REST API in Rust
+
+This project involves the development of a *Rest API* for a meal planning system using the *Rocket* framework. The "*backend*" manages a database that stores ingredients, recipes, and meal plans.
 
 > [!NOTE]
-> Por cuestiones de tiempo se tomaron simplificaciones en la base de datos, mensajes intuitivos a los usuarios y logs. Tener en cuenta que es una aplicación orientada al aprendizaje.
+> Due to time constraints, simplifications were made to the database, user messages, and logs. Please note that this is a learning-oriented application.
 
-### Autores:
+### Authors:
 - **Bottini, Franco Nicolas**
 - **Robledo, Valentín**
 
-## ¿Cómo clonar este repositorio?
+## How to Clone This Repository?
 
 ```console
 git clone https://github.com/francobottini99/APIRESTRUST-2023.git
 ```
 
-## ¿Cómo utilizar?
+## How to Use?
 
-Primero, para poder probar el programa vamos a tener que iniciar un servicio *MySql Server*. El esquema de la base de datos se encuentra en el directorio **[database](./database/)** el proyecto.
+First, to test the program, you will need to start a *MySql Server* service. The database schema can be found in the **[database](./database/)** directory of the project.
 
-Luego, configurar el archivo **[database.env](./server/database.env)** con la dirección *mysql* para poder establecer conexión con la base de datos.
+Then, configure the **[database.env](./server/database.env)** file with the *mysql* address to establish a connection with the database.
 
-Una vez configurada la base de datos podemos correr el servidor, vamos al directorio principal del proyecto **[server](./server/)**  y utilizamos los siguientes comandos:
+Once the database is configured, you can run the server by going to the main directory of the project **[server](./server/)** and using the following commands:
 
 ```console
 cargo build
@@ -31,37 +35,37 @@ cargo build
 cargo run
 ```
 
-Una vez el servidor corriendo podemos utilizar los *endpoints*. En nuestro caso utilizamos el *software postman*.
+Once the server is running, you can use the *endpoints*. In our case, we used the *Postman* software.
 
 ## Endpoints
 
-### Ingredientes
+### Ingredients
 
-- <span style="color: green">POST</span> `/api/add/ingredient`: Agregar un ingrediente.
-- <span style="color: dodgerblue">GET</span> `/api/get/ingredient`: Obtener ingredientes.
-- <span style="color: gold">PUT</span> `/api/update/ingredient`: Actualizar ingredientes.
-- <span style="color: red">DELETE</span> `/api/delete/ingredient/<id>`: Eliminar un ingrediente por ID.
+- <span style="color: green">POST</span> `/api/add/ingredient`: Add an ingredient.
+- <span style="color: dodgerblue">GET</span> `/api/get/ingredient`: Get ingredients.
+- <span style="color: gold">PUT</span> `/api/update/ingredient`: Update ingredients.
+- <span style="color: red">DELETE</span> `/api/delete/ingredient/<id>`: Delete an ingredient by ID.
 
-### Recetas
+### Recipes
 
-- <span style="color: green">POST</span> `/api/add/recipe`: Agregar una receta.
-- <span style="color: dodgerblue">GET</span> `/api/get/recipe`: Obtener recetas.
-- <span style="color: gold">PUT</span> `/api/update/recipe`: Actualizar receta.
-- <span style="color: red">DELETE</span> `/api/delete/recipe/<id>`: Eliminar una receta por ID.
+- <span style="color: green">POST</span> `/api/add/recipe`: Add a recipe.
+- <span style="color: dodgerblue">GET</span> `/api/get/recipe`: Get recipes.
+- <span style="color: gold">PUT</span> `/api/update/recipe`: Update recipe.
+- <span style="color: red">DELETE</span> `/api/delete/recipe/<id>`: Delete a recipe by ID.
 
-### Planes alimenticios
+### Meal Plans
 
-- <span style="color: green">POST</span> `/api/add/mealplan`: Agregar un plan alimenticio.
-- <span style="color: dodgerblue">GET</span> `/api/get/mealplan`: Obtener planes alimenticios.
-- <span style="color: gold">PUT</span> `/api/update/mealplan`: Actualizar un plan alimenticio.
-- <span style="color: red">DELETE</span> `/api/delete/mealplan/<id>`: Eliminar un plan alimenticio por ID.
+- <span style="color: green">POST</span> `/api/add/mealplan`: Add a meal plan.
+- <span style="color: dodgerblue">GET</span> `/api/get/mealplan`: Get meal plans.
+- <span style="color: gold">PUT</span> `/api/update/mealplan`: Update a meal plan.
+- <span style="color: red">DELETE</span> `/api/delete/mealplan/<id>`: Delete a meal plan by ID.
 
-### ¿Qué recibe cada *request*?
+### What Does Each *Request* Receive?
 
-### Ingredientes
+### Ingredients
 
 > [!NOTE]
-> Simplificación para los datos de valor nutricional de los ingredientes: los valores se cargan por 100grs.
+> Simplification for the nutritional values of the ingredients: values are entered per 100 grams.
 
 ```json
 {
@@ -73,11 +77,11 @@ Una vez el servidor corriendo podemos utilizar los *endpoints*. En nuestro caso 
 }
 ```
 
-### Recetas
+### Recipes
 
 > [!NOTE]
-> Se proporciona el *id* de cada ingrediente con la cantidad y la unidad que describe a esa cantidad.
- 
+> The *id* of each ingredient is provided with the quantity and unit describing that quantity.
+
 ```json
 {
     "id_recipe": 0,
@@ -102,11 +106,11 @@ Una vez el servidor corriendo podemos utilizar los *endpoints*. En nuestro caso 
 }
 ```
 
-### Plan Alimenticio
+### Meal Plan
 
 > [!NOTE]
-> Se proporciona el *id* de cada receta especificando el día de la semana y a que comida del día pertenece (desayuno, almuerzo, cena)
- 
+> The *id* of each recipe is provided, specifying the day of the week and which meal of the day it belongs to (breakfast, lunch, dinner).
+
 ```json
 {
     "id_mealplan": 0,
@@ -127,29 +131,29 @@ Una vez el servidor corriendo podemos utilizar los *endpoints*. En nuestro caso 
 }
 ```
 
-## Arquitectura del proyecto
+## Project Architecture
 
-Para el diseño se utilizó una arquitectura de tres capas o (Three Layer Architecture). La misma consiste en una capa de presentación o api, capa de negocios y por último capa de acceso a datos.
+The design follows a three-layer architecture. It consists of a presentation layer (API), business layer, and data access layer.
 
-### *API Layer* o *Presentation Layer*
+### *API Layer* or *Presentation Layer*
 
-La capa de Presentación o *Presentation Layer* es la interfaz que expone los puntos finales (*endpoints*) al cliente. Esta capa es responsable de recibir las solicitudes, realizar la validación de datos de entrada y encargarse de serializar y deserializar los datos a formato *json* para que sean comprensibles para el cliente.
+The Presentation Layer is the interface that exposes the endpoints to the client. This layer is responsible for receiving requests, validating input data, and serializing and deserializing data to JSON format for the client.
 
-### *Bussiness Layer*
+### *Business Layer*
 
-La capa de Negocios o *Business Layer* se encarga de la lógica de la aplicación. Aquí se implementan las reglas de negocio, la lógica de procesamiento y las operaciones complejas que no deben estar directamente en la capa de presentación. Esta capa actúa como un puente entre la capa de API y la capa de acceso a datos, asegurándose de que la aplicación funcione de acuerdo con las reglas.
+The Business Layer handles the application logic. Here, business rules, processing logic, and complex operations are implemented that should not be directly in the presentation layer. This layer acts as a bridge between the API layer and the data access layer, ensuring the application functions according to the rules.
 
 ### *Data Access Layer*
 
-La capa de Acceso a Datos o *Data Access Layer* interactúa directamente con la base de datos. Es responsable de realizar operaciones de lectura y escritura en la base de datos según las solicitudes de la capa de negocios. Aquí se manejan las consultas SQL y la manipulación de datos garantizando que la información se almacene y recupere de manera eficiente y segura.
+The Data Access Layer interacts directly with the database. It is responsible for performing read and write operations in the database according to the requests from the business layer. This layer handles SQL queries and data manipulation, ensuring that information is stored and retrieved efficiently and securely.
 
-## Base de Datos
+## Database
 
-![Esquema de la base de datos](imgs/tp3_database_schema.png)
+![Database Schema](imgs/tp3_database_schema.png)
 
-## Algunos ejemplos básicos
+## Basic Examples
 
-### *POST ADD* y *GET* a ingredientes
+### *POST ADD* and *GET* Ingredients
 
 ```console
 /api/add/ingredient
@@ -157,7 +161,7 @@ La capa de Acceso a Datos o *Data Access Layer* interactúa directamente con la 
 ```json
 {
     "id_ingredient": 0,
-    "name": "Huevo",
+    "name": "Egg",
     "proteins": 14.6,
     "carbs": 0.72,
     "fats": 9.6
@@ -167,9 +171,9 @@ La capa de Acceso a Datos o *Data Access Layer* interactúa directamente con la 
 ```console
 /api/get/ingredient
 ```
-![Get Ingredientes](imgs/get_ingredients.png)
+![Get Ingredients](imgs/get_ingredients.png)
 
-### *POST ADD* y *GET* a recetas
+### *POST ADD* and *GET* Recipes
 
 ```console
 /api/add/recipe
@@ -177,14 +181,14 @@ La capa de Acceso a Datos o *Data Access Layer* interactúa directamente con la 
 ```json
 {
     "id_recipe": 0,
-    "name": "Huevo revuelto",
-    "category": "Desayuno",
-    "instructions": "Batir el huevo durante 1 minuto y cocinarlo en una sartén.",
+    "name": "Scrambled Eggs",
+    "category": "Breakfast",
+    "instructions": "Beat the egg for 1 minute and cook it in a pan.",
     "ingredients": [
     {
       "id_ingredient": 5,
       "amount": 1,
-      "unit": "Unidad (un huevo)"
+      "unit": "Unit (one egg)"
     }
   ]
 }
@@ -195,7 +199,7 @@ La capa de Acceso a Datos o *Data Access Layer* interactúa directamente con la 
 ```
 ![Get Recipe](imgs/get_recipes.png)
 
-### *POST ADD* y *GET* a plan alimenticio
+### *POST ADD* and *GET* Meal Plan
 
 ```console
 /api/add/mealplan
@@ -203,18 +207,18 @@ La capa de Acceso a Datos o *Data Access Layer* interactúa directamente con la 
 ```json
 {
     "id_mealplan": 0,
-    "name": "Plan Semanal",
-    "category": "Deficit calórico",
+    "name": "Weekly Plan",
+    "category": "Caloric Deficit",
     "recipes": [
     {
       "id_recipe": 9,
-      "day": "Lunes",
-      "meal_type": "Merienda"
+      "day": "Monday",
+      "meal_type": "Snack"
     },
     {
       "id_recipe": 10,
-      "day": "Lunes",
-      "meal_type": "Desayuno"
+      "day": "Monday",
+      "meal_type": "Breakfast"
     }
   ]
 }
@@ -224,4 +228,4 @@ La capa de Acceso a Datos o *Data Access Layer* interactúa directamente con la 
 /api/get/mealplan
 ```
 
-![Get Recipe](imgs/get_mealplans.png)
+![Get Meal Plans](imgs/get_mealplans.png)
